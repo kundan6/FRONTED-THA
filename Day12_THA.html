@@ -1,0 +1,75 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+   <style>
+       h1 {
+    text-align: center;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#container {
+    background-color: white;
+    width: 1024px;
+    height: 600px;
+    text-align: center;
+}
+
+#task {
+    text-align: center;
+    display: inline;
+    margin : 0 auto;
+    width: 300px;
+    height: 24px;
+    vertical-align: bottom;
+    font-size: 15px;
+}
+
+#task-button {
+    display: inline;
+    margin : 0 auto;
+    height: 30px;
+    width: 30px;
+    color: white;
+    background-color: black;
+    font-size: 25px;
+    text-align: center;
+}
+
+#list-container {
+    margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+   </style>
+</head>
+<body>
+    <div id="container">
+    <h1>To do list</h1>
+        <input type="text" id="task" placeholder="add a new task"> <button id="task-button">+</button>
+        <div id="list-container"></div>
+    </div>
+    <script >
+        const addNewTaskBtn = document.getElementById("task-button");
+        const taskContainer = document.getElementById("list-container");
+        const inputField = document.getElementById("task");
+
+        addNewTaskBtn.addEventListener("click", function() {
+        const newTask = document.createElement("p");
+        newTask.innerText = inputField.value;
+        taskContainer.appendChild(newTask);
+        inputField.value = "";
+        newTask.addEventListener("click", function() {
+            newTask.style.textDecoration = "line-through";
+        })
+        newTask.addEventListener("dblclick", function() {
+            taskContainer.removeChild(newTask);
+        })
+        })
+    </script>
+</body>
+</html>
